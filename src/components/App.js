@@ -20,7 +20,7 @@ function App() {
         <Router history={history}>
             {/* <div className="container" style={{ border: "0.2px gray solid", height: '75vh', marginTop: '20px' }}>
                 <div className="row g-3 " > */}
-                    <Head />
+                    {/* <Head /> */}
                     {/* <div className="col-6" style={{ borderLeft: "0.2px gray solid", height: '75vh' }}> */}
 
                         <Switch>
