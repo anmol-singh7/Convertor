@@ -1,7 +1,8 @@
 import React from 'react';
 import { combineReducers } from 'redux';
+import headValues from './headValues';
 export default combineReducers(
 {
-    av:1
+    values:headValues
 }
 )
