@@ -18,27 +18,37 @@ import Head from "./Head";
 function App() {
     return (
         <Router history={history}>
-        <Head/>
-            <Switch>
-                {/* <Route path="/" exact component={homePage} /> */}
-                <Route path="/binaryTodecimal" exact component={binaryTodecimal} />
-                <Route path="/binaryToOctal" exact component={binaryToOctal} />
-                <Route path="/binaryTohexadecimal" exact component={binaryTohexadecimal}  />
+            {/* <div className="container" style={{ border: "0.2px gray solid", height: '75vh', marginTop: '20px' }}>
+                <div className="row g-3 " > */}
+                    <Head />
+                    {/* <div className="col-6" style={{ borderLeft: "0.2px gray solid", height: '75vh' }}> */}
 
-                <Route path="/decimalTobinary" exact component={decimalTobinary} />
-                <Route path="/decimalToOctal" exact component={decimalToOctal } />
-                <Route path="/decimalTohexadecimal" exact component={decimalToHexadecimal } />
+                        <Switch>
+                            <Route path="/binaryTodecimal" exact component={binaryTodecimal} />
+                            <Route path="/binaryToOctal" exact component={binaryToOctal} />
+                            <Route path="/binaryTohexadecimal" exact component={binaryTohexadecimal} />
 
-                <Route path="/OctalTobinary" exact component={OctalTobinary } />
-                <Route path="/OctalTodecimal" exact component={octalTodecimal } />
-                <Route path="/OctalTohexadecimal" exact component={octalTohexadecimal } />
+                            <Route path="/decimalTobinary" exact component={decimalTobinary} />
+                            <Route path="/decimalToOctal" exact component={decimalToOctal} />
+                            <Route path="/decimalTohexadecimal" exact component={decimalToHexadecimal} />
 
-                <Route path="/hexadecimalTodecimal" exact component={hexadecimalTodecimal } />
-                <Route path="/hexadecimalTobinary" exact component={hexadecimalTobinary} />
-                <Route path="/hexadecimalToOctal" exact component={hexadecimalToOctal } />
-                
-            </Switch>
+                            <Route path="/OctalTobinary" exact component={OctalTobinary} />
+                            <Route path="/OctalTodecimal" exact component={octalTodecimal} />
+                            <Route path="/OctalTohexadecimal" exact component={octalTohexadecimal} />
+
+                            <Route path="/hexadecimalTodecimal" exact component={hexadecimalTodecimal} />
+                            <Route path="/hexadecimalTobinary" exact component={hexadecimalTobinary} />
+                            <Route path="/hexadecimalToOctal" exact component={hexadecimalToOctal} />
+
+                        </Switch>
+                    {/* </div>
+                </div>
+                <div style={{height:"60vh",marginTop:"20px",border:"1px black solid"}}>
+
+                </div>
+            </div> */}
         </Router>
+
 
     )
 }
