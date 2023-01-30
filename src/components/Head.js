@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { firstValue, secondValue,swap } from '../actions';
+import { firstValue, secondValue, swap } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import "../Designs/head.css";
 
 const Head = (props) => {
-    const [valueToConvert,setValue]=useState('');
-    const [result,setResult] =useState('');
+    const [valueToConvert, setValue] = useState('');
+    const [result, setResult] = useState("");
+    const [classname, setClassname] = useState('form-control2');
+    const [errorMessage, setError] = useState('');
+    let err = "";
+    ;
 
-    const resultCaller=()=>{
+    const resultCaller = () => {
         // console.log("a")
         setResult(props.resultMaker(valueToConvert));
     }
@@ -24,7 +29,23 @@ const Head = (props) => {
             props.secondValue(lasts, first)
         }
     }
-  
+
+    const handleChange = (e) => {
+
+        // console.log("e",typeof(e),e)
+        err = props.error(e);
+        //  console.log("err",err);
+        if (err !== "") {
+            setError(err);
+            setClassname('form-control2  form-control2-red-outline');
+        }
+        else {
+            setValue(e)
+            setClassname('form-control2');
+            setError("");
+
+        }
+    }
     //   history.push
     return (
 
@@ -57,28 +78,45 @@ const Head = (props) => {
                 </div>
             </div>
             <div className="form-floating mb-3 col-12" style={{ position: 'relative', marginTop: '40px' }}>
-               
-                <input type="text" className="form-control" value={valueToConvert} onChange={(e)=>{setValue(e.target.value)}}/>
-            </div>
+
+                {/* <input type="text" className="form-control" value={valueToConvert} onChange={(e)=>handleChange(e)}/> */}
+                {/* {errorMessage} */}
+
+                <form className="row g-3" >
+                    <div className="col-md-6 ">
+                        <input type="text" className={classname} value={valueToConvert} onChange={(e) => handleChange(e.target.value)} />
+                        <div className="errorcolor">
+                            {errorMessage}
+                        </div>
+                    </div>
+                </form >
+            </div >
+
             <div className='row'>
                 <div className='col-4'>
-                    <button type="button" className="btn btn-success" onClick={()=>resultCaller()}>Convert</button>
+                    <button type="button" className="btn btn-success" onClick={() => {
+                        resultCaller()
+                        setClassname('form-control2')
+                        setError("");
+                    }}>Convert</button>
                 </div>
                 <div className='col-4'>
                     <button type="button" className="btn btn-primary" onClick={() => {
-                                                                                       setValue("");
-                                                                                        setResult("");
-                                                                                       }}>Reset</button>
+                        setValue("");
+                        setResult("");
+                        setClassname("form-control2");
+                        setError("");
+                    }}>Reset</button>
                 </div>
                 <div className='col-4'>
-                    <button type="button" className="btn btn-warning" onClick={()=>props.swap(first,second)}>Swap</button>
+                    <button type="button" className="btn btn-warning" onClick={() => props.swap(first, second)}>Swap</button>
                 </div>
             </div>
-            <div className='row g-6 mt-5 ' style={{border:"1px grey solid",height:"8rem",textAlign:"end"}}  >
-                 <p>{result}</p>
+            <div className='row g-6 mt-5 ' style={{ border: "1px grey solid", height: "8rem", textAlign: "end", fontSize: "6vh", fontFamily: 'monospace' }}  >
+                <p>{result}</p>
             </div>
 
-        </div>
+        </div >
     )
 }
 const mapStateToProps = (state) => {
@@ -89,4 +127,4 @@ const mapStateToProps = (state) => {
 //     form: 'HeAD'
 // })(Head));
 
-export default connect(mapStateToProps, { firstValue, secondValue ,swap})(Head);
+export default connect(mapStateToProps, { firstValue, secondValue, swap })(Head);
