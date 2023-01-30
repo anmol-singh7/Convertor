@@ -13,9 +13,16 @@ function OctalTobinary() {
             return "Wrong Input";
         }
     }
+    const error =(str) =>{
+        if(str.length!==0){
+            return /^[0-7]+$/.test(str) ? "" : `${str[str.length - 1] } is not a valid Octal symbol. Valid Octal symbols are 0-7`;
+        }
+        return "";
+    }
+
     return (
         <div className="container">
-            <Head resultMaker={octal_binary}/>
+            <Head resultMaker={octal_binary} error={error} />
             OctalTobinary
         </div>
     )
