@@ -3,7 +3,7 @@ const INITIAL_STATE = {
     second: "decimal"
 }
 export default (state = INITIAL_STATE, action) => {
-    console.log("reducer", state);
+    // console.log("reducer", state);
     switch (action.type) {
 
         case 'CHANGE_FIRST': {
@@ -14,11 +14,18 @@ export default (state = INITIAL_STATE, action) => {
             return {...state,first:action.payload}
         }
         case "CHANGE_SECOND": {
-            // return {
+            // const newState= {
             //     first: state.first,
             //     second: action.payload
             // }
             return { ...state, second: action.payload }
+        }
+        case "SWAP":{
+             return {
+                first: state.second,
+                second: state.first
+            }
+
         }
         default:
             return state
