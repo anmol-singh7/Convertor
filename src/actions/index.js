@@ -20,3 +20,10 @@ export const secondValue = (value, stateFirst) => {
         payload: value
     }
 }
+
+export const swap =(first,second)=>{
+    history.push(`/${second}To${first}`);
+    return{
+        type:"SWAP"
+    }
+}
