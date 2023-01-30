@@ -16,6 +16,7 @@ import history from '../history';
 import Head from "./Head";
 
 function App() {
+    { history.push("/binaryTodecimal")}
     return (
         <Router history={history}>
             {/* <div className="container" style={{ border: "0.2px gray solid", height: '75vh', marginTop: '20px' }}>
