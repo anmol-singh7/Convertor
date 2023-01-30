@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
-import { firstValue, secondValue } from '../actions';
+import { firstValue, secondValue,swap } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form';
+
 const Head = (props) => {
+    const [valueToConvert,setValue]=useState('');
+    const [result,setResult] =useState('');
+
+    const resultCaller=()=>{
+        // console.log("a")
+        setResult(props.resultMaker(valueToConvert));
+    }
+
     const { first, second } = props.value;
 
     const firstWatcher = (initials) => {
@@ -16,9 +24,7 @@ const Head = (props) => {
             props.secondValue(lasts, first)
         }
     }
-    const render = (formProps) => {
-        console.log(formProps)
-    }
+  
     //   history.push
     return (
 
@@ -51,19 +57,25 @@ const Head = (props) => {
                 </div>
             </div>
             <div className="form-floating mb-3 col-12" style={{ position: 'relative', marginTop: '40px' }}>
-                <Field name="value" component={render} label="value" />
-                <input type="text" className="form-control" id="floatingInput" />
+               
+                <input type="text" className="form-control" value={valueToConvert} onChange={(e)=>{setValue(e.target.value)}}/>
             </div>
             <div className='row'>
                 <div className='col-4'>
-                    <button type="button" className="btn btn-success">Convert</button>
+                    <button type="button" className="btn btn-success" onClick={()=>resultCaller()}>Convert</button>
                 </div>
                 <div className='col-4'>
-                    <button type="button" className="btn btn-primary">Reset</button>
+                    <button type="button" className="btn btn-primary" onClick={() => {
+                                                                                       setValue("");
+                                                                                        setResult("");
+                                                                                       }}>Reset</button>
                 </div>
                 <div className='col-4'>
-                    <Link to={`${second}To${first}`}> <button type="button" className="btn btn-warning">Swap</button></Link>
+                    <button type="button" className="btn btn-warning" onClick={()=>props.swap(first,second)}>Swap</button>
                 </div>
+            </div>
+            <div className='row g-6 mt-5 ' style={{border:"1px grey solid",height:"8rem",textAlign:"end"}}  >
+                 <p>{result}</p>
             </div>
 
         </div>
@@ -73,9 +85,8 @@ const mapStateToProps = (state) => {
     console.log("map", state.values)
     return { value: state.values }
 }
-export default connect(mapStateToProps, { firstValue, secondValue })(reduxForm({
-    form: 'HeAD'
-})(Head));
+// export default connect(mapStateToProps, { firstValue, secondValue })(reduxForm({
+//     form: 'HeAD'
+// })(Head));
 
-
-//  export default connect(mapStateToProps, { firstValue, secondValue })(Head);
+export default connect(mapStateToProps, { firstValue, secondValue ,swap})(Head);
