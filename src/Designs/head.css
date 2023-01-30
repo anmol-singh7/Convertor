@@ -1,0 +1,23 @@
+.formcolor{
+    outline-color: #a42e2e;
+    outline-width: 51px;
+    outline-offset: 4px;
+    /* border: 0.1rem green solid; */
+    
+}
+
+.form-control2-red-outline {
+    border: 1px solid rgb(245, 0, 0);
+    border-radius: 0.25rem;
+    box-shadow: none;
+    border-color: red;
+        box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.errorcolor{
+    color:#a42e2e;
+}
+.form-control2 {
+  
+}
