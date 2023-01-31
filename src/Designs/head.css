@@ -17,7 +17,35 @@
 
 .errorcolor{
     color:#a42e2e;
+    height: 2rem;
 }
 .form-control2 {
-  
+  width:20vw;
+  /* height:7vh; */
+height: calc(1.5em + 0.75rem + 2px);
+padding: 0.375rem 0.75rem;
+color: #495057;
+
+background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+  font-size: 1.6rem;
+    border-radius: 0.25rem;
+   
+}
+.form-control2:focus{ 
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.result_align {
+    height: auto;
+    min-height: 15vh;
+    word-wrap: break-word;
+    width:80%;
+    overflow: hidden;
+    border: 1px grey solid;
+    font-size: 4vh;
+    font-family: monospace;
+    margin-top: 6vh;
+    background-color: #fff;
 }
