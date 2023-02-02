@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { firstValue, secondValue, swap } from '../actions';
 import { connect } from 'react-redux';
-import DropButton from './conversions/DropButtons';
+import DropButton from './DropButtons';
 import "../Designs/head.css";
 
 const Head = (props) => {
